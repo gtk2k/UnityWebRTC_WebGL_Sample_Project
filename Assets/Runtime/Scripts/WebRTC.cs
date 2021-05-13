@@ -840,6 +840,8 @@ namespace Unity.WebRTC
         public static extern RTCErrorType CreateIceCandidate(ref RTCIceCandidateInitInternal options, out IntPtr candidate);
 #endif
         [DllImport(WebRTC.Lib)]
+        public static extern IntPtr CreateNativeRTCIceCandidate(string candidate, string sdpMid, int sdpMLineIndex);
+        [DllImport(WebRTC.Lib)]
         public static extern RTCErrorType DeleteIceCandidate(IntPtr candidate);
 #if !UNITY_WEBGL
         [DllImport(WebRTC.Lib)]

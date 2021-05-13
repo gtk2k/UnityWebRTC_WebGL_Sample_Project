@@ -352,9 +352,13 @@ namespace Unity.WebRTC
             GC.SuppressFinalize(this);
         }
 
-        public RTCIceCandidate(IntPtr ptr, string candidate, string sdpMid, int sdpMLineIndex)
+        public RTCIceCandidate(string candidate, string sdpMid, int sdpMLineIndex, IntPtr? ptr = null)
         {
-            self = ptr;
+            if(ptr == null)
+            {
+                ptr = NativeMethods.CreateNativeRTCIceCandidate(candidate, sdpMid, sdpMLineIndex);
+            }
+            self = ptr.Value;
             this.Candidate = candidate;
             this.SdpMid = sdpMid;
             this.SdpMLineIndex = sdpMLineIndex;

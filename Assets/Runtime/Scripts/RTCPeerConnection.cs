@@ -334,7 +334,7 @@ namespace Unity.WebRTC
         {
             if (WebRTC.Table[ptr] is RTCPeerConnection connection)
             {
-                var candidate = new RTCIceCandidate(iceCandidatePtr, sdp, sdpMid, sdpMlineIndex);
+                var candidate = new RTCIceCandidate(sdp, sdpMid, sdpMlineIndex, iceCandidatePtr);
                 connection.OnIceCandidate?.Invoke(candidate);
             }
         }

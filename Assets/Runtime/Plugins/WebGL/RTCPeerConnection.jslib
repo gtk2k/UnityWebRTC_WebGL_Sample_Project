@@ -58,6 +58,8 @@ var UnityWebRTCPeerConnection = {
       var receiver = evt.receiver;
       var transceiver = evt.transceiver;
       var track = evt.track;
+      if(evt.streams[0])
+        evt.streams[0].removeTrack(track);
       uwcom_addManageObj(receiver);
       uwcom_addManageObj(transceiver);
       uwcom_addManageObj(track);

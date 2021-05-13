@@ -67,13 +67,14 @@ var UnityWebRTCMediaStream = {
     if (!uwcom_existsCheck(trackPtr, 'MediaStreamAddTrack', 'track')) return;
     var stream = UWManaged[streamPtr];
     var track = UWManaged[trackPtr];
+    console.log('videoTrack:' + track.id);
     try {
       console.log('MediaStreamAddTrack:' + streamPtr + ':' + trackPtr);
       stream.addTrack(track);
       var video = document.createElement('video');
       video.id = 'video_' + track.managePtr.toString();
       video.muted = true;
-      video.style.display = 'none';
+      //video.style.display = 'none';
       video.srcObject = stream;
       document.body.appendChild(video);
       video.style.width = '300px';
